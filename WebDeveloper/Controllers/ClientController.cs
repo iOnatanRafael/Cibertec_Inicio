@@ -67,13 +67,10 @@ namespace WebDeveloper.Controllers
 
         [HttpPost]
         public ActionResult Delete(Client client)
-        {
-            if (ModelState.IsValid)
-            {
-                _client.Delete(client);
-                return RedirectToAction("Index");
-            }
-            return View();
+        {       
+            _client.Delete(client);
+            return RedirectToAction("Index");    
+     
         }
 
     }
