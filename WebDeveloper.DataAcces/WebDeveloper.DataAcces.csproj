@@ -52,19 +52,20 @@
     <Compile Include="BaseDataAccess.cs" />
     <Compile Include="ClientData.cs" />
     <Compile Include="IDataAccess.cs" />
+    <Compile Include="ProductData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebContextDb.cs" />
     <Compile Include="WebDeveloperInitializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebDeveloper.Model\WebDeveloper.Model.csproj">
       <Project>{0b87e6e4-d47f-4399-ac4d-0c922c991b79}</Project>
       <Name>WebDeveloper.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
