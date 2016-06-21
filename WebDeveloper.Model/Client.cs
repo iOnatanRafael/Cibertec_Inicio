@@ -14,7 +14,7 @@ namespace WebDeveloper.Model
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "This Last Name is required")]
         public string LastName { get; set; }
-
+        
         [DataType(DataType.DateTime)]
         public DateTime? DateCreation { get; set; }
     }
