@@ -1,24 +1,16 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace WebDeveloper.Model
 {
     public class Product
     {
-        public int ID { get; set; }
-
-        [Display(Name = "Name")]
-        [Required(ErrorMessage = "This field is required")]
-        public string Name { get; set; }
-
-        [Display(Name = "Stock")]
-        [Required(ErrorMessage = "This field is required")]
-        public decimal Stock { get; set; }
-
-        [Display(Name = "Price")]
-        [Required(ErrorMessage = "This field is required")]
-        public decimal Price { get; set; }
-
-        public DateTime? DateRegistration { get; set; }
-}
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public DateTime? CreateDate { get; set; }
+    }
 }
