@@ -10,11 +10,22 @@ namespace WebDeveloper.Controllers
 {
     public class ClientController : Controller
     {
-        private ClientData _client = new ClientData();
+        //private ClientData _client = new ClientData();
+        //private IDataAccess<Client> _client;
+        private ClientData _client;
+        //public ClientController(IDataAccess<Client> client)
+        //{
+        //    _client = client;
+        //}
+        public ClientController(ClientData client)
+        {
+            _client = client;
+        }
 
         // GET: Client
         public ActionResult Index()
         {
+            ViewBag.Title = Resources.Resource.Client_Title;
             return View(_client.GetList());
         }
 
@@ -67,9 +78,9 @@ namespace WebDeveloper.Controllers
 
         [HttpPost]
         public ActionResult Delete(Client client)
-        {       
-            if(_client.Delete(client)>0)
-            return RedirectToAction("Index");
+        {
+            if (_client.Delete(client) > 0)
+                return RedirectToAction("Index");
             return View(client);
         }
 
