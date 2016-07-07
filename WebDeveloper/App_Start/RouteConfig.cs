@@ -29,8 +29,8 @@ namespace WebDeveloper
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new {
-                    controller = "Product",
-                    action = "Index",
+                    controller = "Account",
+                    action = "Login",
                     id = UrlParameter.Optional }
             );
    
