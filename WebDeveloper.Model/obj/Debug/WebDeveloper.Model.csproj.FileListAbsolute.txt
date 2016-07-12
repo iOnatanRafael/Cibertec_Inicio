@@ -1,0 +1,8 @@
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\bin\Debug\WebDeveloper.Model.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\bin\Debug\WebDeveloper.Model.pdb
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\bin\Debug\WebDeveloper.Resources.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\bin\Debug\WebDeveloper.Resources.pdb
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\bin\Debug\es-419\WebDeveloper.Resources.resources.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\obj\Debug\WebDeveloper.Model.csprojResolveAssemblyReference.cache
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\obj\Debug\WebDeveloper.Model.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Model\obj\Debug\WebDeveloper.Model.pdb

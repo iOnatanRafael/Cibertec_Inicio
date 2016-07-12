@@ -1,0 +1,9 @@
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\bin\Debug\WebDeveloper.Resources.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\bin\Debug\WebDeveloper.Resources.pdb
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\bin\Debug\es-419\WebDeveloper.Resources.resources.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\obj\Debug\WebDeveloper.Resources.Resource.resources
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\obj\Debug\WebDeveloper.Resources.Resource.es-419.resources
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\obj\Debug\WebDeveloper.Resources.csproj.GenerateResource.Cache
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\obj\Debug\es-419\WebDeveloper.Resources.resources.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\obj\Debug\WebDeveloper.Resources.dll
+D:\GitlabRepos\Cibertec_Practica\WebDeveloper.Resources\obj\Debug\WebDeveloper.Resources.pdb
