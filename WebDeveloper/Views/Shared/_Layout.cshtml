@@ -19,14 +19,12 @@
                     </button>
                     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
-                <nav class="navbar-collapse collapse">
+                <nav class="navbar-collapse collapse">                    
                     <ul class="nav navbar-nav">
-                        @Html.ActionLink("Home", "Index", "Home")
-                        @Html.ActionLink("Client", "Index", "Client")
-                        @Html.ActionLink("Product", "Index", "Product")
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
-                </nav>               
+                </nav>
             </div>
         </div>
 
@@ -34,9 +32,9 @@
     <section class="container body-content">
         @RenderBody()
     </section>
-    <footer>
+    @*<footer>
         &copy; @DateTime.Now.Year - Todos los derechos reservados al autor.
-    </footer>
+    </footer>*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

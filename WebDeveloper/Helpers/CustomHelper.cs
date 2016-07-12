@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -6,8 +10,7 @@ namespace WebDeveloper.Helpers
 {
     public static class CustomHelper
     {
-        #region PriceMethods
-        public static IHtmlString DisplayPriceStatic(double price) //Tratar de no usarlo
+        public static IHtmlString DisplayPriceStatic(double price)
         {
             return new HtmlString(GetHtmlForPrice(price));
         }
@@ -16,33 +19,19 @@ namespace WebDeveloper.Helpers
         {
             return new HtmlString(GetHtmlForPrice(price));
         }
-
         private static string GetHtmlForPrice(double price)
         {
-            return price == 0.00 ? "<span>Free!!!</span>" : $"<span>{price.ToString("C")}</span>";
-        }
-        #endregion
-
-        #region DateMethods
-        private static string GetHtmlForDateOrNull(DateTime? createDate)
-        {
-            return createDate.HasValue ? $"<span>{createDate.Value.ToString("dd-MM-yyyy")}</span>": "<span>None</span>";
+            return price == 0.0 ? "<span>Free!!!</span>" : $"<span>{price.ToString("C")}</span>";
         }
 
-        public static IHtmlString DisplayDateOrNullStatic(DateTime? createDate)
+        public static IHtmlString DisplayDateOrNullExtension(this HtmlHelper helper, DateTime? date)
         {
-            return new HtmlString(GetDateHtml(createDate));
-        }
-        
-        public static IHtmlString DisplayDateOrNullExtension(this HtmlHelper helper, DateTime? createDate)
-        {
-            return new HtmlString(GetDateHtml(createDate));
+            return new HtmlString(GetDateHtml(date));
         }
 
-        private static string GetDateHtml(DateTime? createDate)
-        {
-            return createDate.HasValue ? $"<span>{createDate.Value.ToString("dd-MM-yyyy")}</span>" : "<span>None</span>";
+        private static string GetDateHtml(DateTime? date)
+        {            
+            return date.HasValue ? $"<span>{date.Value.ToString("dd-mm-yyyy")}</span>" : "None";
         }
-        #endregion 
     }
 }
