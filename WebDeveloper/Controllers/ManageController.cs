@@ -10,46 +10,9 @@ using WebDeveloper.Models;
 
 namespace WebDeveloper.Controllers
 {
-    [Authorize]
-    public class ManageController : Controller
+    [Authorize(Roles = "Admin")]
+    public class ManageController : BaseAccountController
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-
-        public ManageController()
-        {
-        }
-
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-        
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -72,8 +35,7 @@ namespace WebDeveloper.Controllers
             };
             return View(model);
         }
-
-        
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
@@ -95,14 +57,12 @@ namespace WebDeveloper.Controllers
             }
             return RedirectToAction("ManageLogins", new { Message = message });
         }
-
-        
+                
         public ActionResult AddPhoneNumber()
         {
             return View();
         }
-
-        
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -124,8 +84,7 @@ namespace WebDeveloper.Controllers
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
-
-        
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
@@ -139,7 +98,6 @@ namespace WebDeveloper.Controllers
             return RedirectToAction("Index", "Manage");
         }
         
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
@@ -152,14 +110,12 @@ namespace WebDeveloper.Controllers
             }
             return RedirectToAction("Index", "Manage");
         }
-
-        
+                
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
-        }
-        
+        }        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -182,8 +138,7 @@ namespace WebDeveloper.Controllers
             ModelState.AddModelError("", "Failed to verify phone");
             return View(model);
         }
-
-        
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
@@ -232,8 +187,7 @@ namespace WebDeveloper.Controllers
         {
             return View();
         }
-
-        
+                
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
@@ -256,7 +210,6 @@ namespace WebDeveloper.Controllers
             return View(model);
         }
         
-
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -277,16 +230,14 @@ namespace WebDeveloper.Controllers
                 OtherLogins = otherLogins
             });
         }
-
-       
+               
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
         {
             return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
         }
-
-        
+                
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
@@ -296,30 +247,6 @@ namespace WebDeveloper.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && _userManager != null)
-            {
-                _userManager.Dispose();
-                _userManager = null;
-            }
-
-            base.Dispose(disposing);
-        }
-
-
-        private const string XsrfKey = "XsrfId";
-
-        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
         }
 
         private bool HasPassword()
